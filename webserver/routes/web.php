@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/cek', function () {
+    return view('CekPengunjung');
+});
+
+// Route::get('/cek', 'App\Http\Controllers\CekPengunjungController@index');
+
