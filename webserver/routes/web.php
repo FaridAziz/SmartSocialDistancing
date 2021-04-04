@@ -21,5 +21,10 @@ Route::get('/cek', function () {
     return view('CekPengunjung');
 });
 
-// Route::get('/cek', 'App\Http\Controllers\CekPengunjungController@index');
+// Route::get('/kirimdata', function () {
+//     return view('kirimdata');
+// });
+
+
+Route::get('/kirimdata', 'App\Http\Controllers\kirimdata@index');
 
