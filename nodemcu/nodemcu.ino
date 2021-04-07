@@ -3,7 +3,7 @@
 
 const char* ssid = "FARID";
 const char* password = "dewafarsa0500";
-const char* host = "192.168.1.13";
+const char* host = "192.168.1.12/";
 
 int irPin = D7;
 int count = 0;
@@ -48,7 +48,7 @@ void loop() {
 
   String Link;
   HTTPClient http; 
-  Link = "http://192.168.1.13/webserver/public/kirimdata?pengunjung=" + String(count);
+  Link = "http://192.168.1.12/webserver/public/kirimdata?pengunjung=" + String(count);
 
   http.begin(Link);
 
