@@ -5,24 +5,26 @@ const char* ssid = "FARID";
 const char* password = "dewafarsa0500";
 const char* host = "192.168.1.12/";
 
-int irPin = D7;
+int irPin1 = D7;
+int irPin2 = D4;
 int count = 0;
 
 boolean state = true;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(irPin, INPUT);
+  pinMode(irPin1, INPUT);
+  pinMode(irPin2, INPUT);
 
   WiFi.hostname("NodeMCU");
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
+//    Serial.print(".");
     delay(500);
   }
 
-  Serial.println("WIFI CONNECTED");
+//  Serial.println("WIFI CONNECTED");
 
 }
 
@@ -34,16 +36,27 @@ void loop() {
     return;
   }
 
-  if (!digitalRead(irPin) && state) {
+  if (!digitalRead(irPin1) && state) {
     count++;
     state = false;
-    Serial.print("Count : ");
+//    Serial.print("Count : ");
     Serial.println(count);
+    delay(500);
+  }
+  else if(!digitalRead(irPin2) && state){
+    count--;
+    state = false;
+//    Serial.print("Count : ");
+    Serial.println(count);
+    delay(500);
   }
 
-  if (digitalRead(irPin)) {
+  if (digitalRead(irPin1)) {
     state = true;
 //    delay(100);
+  }
+  else if(digitalRead(irPin2)){
+    state = true;
   }
 
   String Link;
