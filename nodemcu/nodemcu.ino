@@ -3,7 +3,7 @@
 
 const char* ssid = "FARID";
 const char* password = "dewafarsa0500";
-const char* host = "192.168.1.12/";
+const char* host = "192.168.1.14/";
 
 int irPin1 = D7;
 int irPin2 = D4;
@@ -20,7 +20,7 @@ void setup() {
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
-//    Serial.print(".");
+    Serial.print(".");
     delay(500);
   }
 
@@ -61,7 +61,7 @@ void loop() {
 
   String Link;
   HTTPClient http; 
-  Link = "http://192.168.1.12/webserver/public/kirimdata?pengunjung=" + String(count);
+  Link = "http://192.168.1.14/webserver/public/kirimdata?pengunjung=" + String(count);
 
   http.begin(Link);
 

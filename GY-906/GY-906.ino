@@ -36,15 +36,15 @@ void loop() {
   duration = pulseIn(echoPin, HIGH);
   // Menghitung jarak (dalam cm) berdasarkan kecepatan gelombang
   distance = duration / 58.2;
-  //  Serial.println(distance);
+//  Serial.println(distance);
 
   // Selama data serial ada
-  while (Serial.available() > 0) {
-    // Ambil data serial kemudian masukkan ke variabel data
-    datamcu = datamcu + char(Serial.read()); // menggabungkan data yang dikirim dari serial yang sifatnya 1 per 1 maka memakai char
-  }
-  Serial.println(datamcu);
-  delay(100);
+//  while (Serial.available() > 0) {
+//    // Ambil data serial kemudian masukkan ke variabel data
+//    datamcu = datamcu + char(Serial.read()); // menggabungkan data yang dikirim dari serial yang sifatnya 1 per 1 maka memakai char
+//  }
+//  Serial.println(datamcu);
+//  delay(100);
 
 
   if (distance < 10 && data == 0) {
@@ -68,7 +68,7 @@ void loop() {
     delay(5000);
     myservo.write(90);
     display_first();
-    Serial.println("Dekatkan Kepala Anda");
+//    Serial.println("Dekatkan Kepala Anda");
   }
   delay(100);
 
@@ -77,6 +77,14 @@ void loop() {
 void bukaPintu() {
   if (last_measurements <= 38) {
     myservo.write(180);
+    Serial.println("buka");
+    Serial.println(last_measurements);
+    Serial.println(distance);
+  }
+  else {
+    Serial.println("tutup");
+    Serial.println(last_measurements);
+    Serial.println(distance);
   }
 }
 
@@ -110,7 +118,7 @@ void display_last_measurements() {
 void display_measurements() {
   lcd.clear();
   //  Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempC());
-  Serial.print("Object = "); Serial.print(mlx.readObjectTempC()); Serial.println("*C");
+//  Serial.print("Object = "); Serial.print(mlx.readObjectTempC()); Serial.println("*C");
   lcd.home();
   lcd.print("Suhu : ");
   lcd.print(mlx.readObjectTempC());
